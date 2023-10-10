@@ -34,12 +34,12 @@ class EventResource extends Resource
                             ->required(),
                         Forms\Components\DateTimePicker::make('time_end'),
                     ]),
-                Forms\Components\TextInput::make('place_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('team_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('place_id')
+                    ->relationship(name: 'place', titleAttribute: 'name')
+                    ->required(),
+                Forms\Components\Select::make('team_id')
+                    ->relationship(name: 'team', titleAttribute: 'name')
+                    ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
