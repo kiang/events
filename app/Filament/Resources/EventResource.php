@@ -36,9 +36,13 @@ class EventResource extends Resource
                     ]),
                 Forms\Components\Select::make('place_id')
                     ->relationship(name: 'place', titleAttribute: 'name')
+                    ->searchable()
+                    ->preload()
                     ->required(),
                 Forms\Components\Select::make('team_id')
                     ->relationship(name: 'team', titleAttribute: 'name')
+                    ->searchable()
+                    ->preload()
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
