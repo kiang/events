@@ -27,6 +27,13 @@ class EventResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Section::make('時間')
+                    ->description('請輸入活動時間，結束時間可以空白')
+                    ->schema([
+                        Forms\Components\DateTimePicker::make('time_gather')
+                            ->required(),
+                        Forms\Components\DateTimePicker::make('time_end'),
+                    ]),
                 Forms\Components\TextInput::make('place_id')
                     ->required()
                     ->numeric(),
@@ -36,9 +43,7 @@ class EventResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DateTimePicker::make('time_gather')
-                    ->required(),
-                Forms\Components\DateTimePicker::make('time_end'),
+
                 Forms\Components\Textarea::make('note')
                     ->maxLength(65535)
                     ->columnSpanFull(),
@@ -85,14 +90,14 @@ class EventResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -101,5 +106,5 @@ class EventResource extends Resource
             'view' => Pages\ViewEvent::route('/{record}'),
             'edit' => Pages\EditEvent::route('/{record}/edit'),
         ];
-    }    
+    }
 }
