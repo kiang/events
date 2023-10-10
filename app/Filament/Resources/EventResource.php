@@ -85,10 +85,12 @@ class EventResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('Place')
+                    ->label('地點')
                     ->relationship('place', 'name')
                     ->searchable()
                     ->preload(),
                 SelectFilter::make('Team')
+                    ->label('團隊')
                     ->relationship('team', 'name')
                     ->searchable()
                     ->preload(),
@@ -101,7 +103,8 @@ class EventResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('time_gather', 'desc');
     }
 
     public static function infolist(Infolists\Infolist $infolist): Infolists\Infolist
