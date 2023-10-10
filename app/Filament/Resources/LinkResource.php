@@ -43,7 +43,7 @@ class LinkResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('event_id')
+                Tables\Columns\TextColumn::make('event.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
