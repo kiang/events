@@ -58,10 +58,10 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('place_id')
+                Tables\Columns\TextColumn::make('place.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('team_id')
+                Tables\Columns\TextColumn::make('team.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
