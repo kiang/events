@@ -23,7 +23,15 @@ class LinkResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('event_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('title')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('url')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -31,7 +39,13 @@ class LinkResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('event_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('url')
+                    ->searchable(),
             ])
             ->filters([
                 //

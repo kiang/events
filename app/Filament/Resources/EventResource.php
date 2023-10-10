@@ -23,7 +23,21 @@ class EventResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('place_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('team_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\DateTimePicker::make('time_gather')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('time_end'),
+                Forms\Components\Textarea::make('note')
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,7 +45,28 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('place_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('team_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('time_gather')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('time_end')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
