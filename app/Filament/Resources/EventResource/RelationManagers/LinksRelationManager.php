@@ -32,7 +32,9 @@ class LinksRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('title')
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('title')
+                ->url(fn (\App\Models\Link $record): string => $record->url)
+                ->openUrlInNewTab(),
             ])
             ->filters([
                 //
