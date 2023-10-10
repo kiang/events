@@ -7,6 +7,7 @@ use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -92,6 +93,24 @@ class EventResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ]);
+    }
+
+    public static function infolist(Infolists\Infolist $infolist): Infolists\Infolist
+    {
+        return $infolist
+            ->schema([
+                Infolists\Components\Section::make('時間')
+                    ->schema([
+                        Infolists\Components\TextEntry::make('time_gather')
+                            ->label('集合時間'),
+                        Infolists\Components\TextEntry::make('time_end')
+                            ->label('結束時間'),
+                    ]),
+                Infolists\Components\TextEntry::make('place.name')
+                    ->label('地點'),
+                Infolists\Components\TextEntry::make('team.name')
+                    ->label('團隊'),
             ]);
     }
 
