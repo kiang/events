@@ -21,6 +21,8 @@ class TeamResource extends Resource
 
     protected static ?string $navigationLabel = '團隊';
 
+    protected static ?int $navigationSort = 2;
+
     public static function form(Form $form): Form
     {
         return $form
