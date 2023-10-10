@@ -10,4 +10,8 @@ class Team extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'note'];
+
+    public function events() {
+        return $this->hasMany(Event::class);
+    }
 }

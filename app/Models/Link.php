@@ -10,4 +10,8 @@ class Link extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'url', 'note'];
+
+    public function event() {
+        return $this->belongsTo(Event::class);
+    }
 }

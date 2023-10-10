@@ -17,5 +17,9 @@ class Event extends Model
 
     public function team() {
         return $this->belongsTo(Team::class);
-    }   
+    }
+
+    public function links() {
+        return $this->hasMany(Link::class);
+    }
 }
