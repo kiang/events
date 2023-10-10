@@ -19,6 +19,8 @@ class PlaceResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = '集合點';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -19,6 +19,8 @@ class TeamResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = '團隊';
+
     public static function form(Form $form): Form
     {
         return $form
