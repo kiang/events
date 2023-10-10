@@ -99,6 +99,20 @@ class EventResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()
+                    ->before(function (Event $record) {
+                        $record->name = '[複製]' . $record->name;
+                        return $record;
+                    })
+                    ->after(function (Tables\Actions\ReplicateAction $action, Event $record) {
+                        $newRecord = $action->getReplica();
+                        foreach ($record->links as $link) {
+                            $newRecord->links()->create([
+                                'title' => $link->title,
+                                'url' => $link->url,
+                            ]);
+                        }
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
