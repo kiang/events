@@ -12,7 +12,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        return 'index';
+        $data = Event::with(['team', 'place', 'links'])->paginate(15);
+        return $data;
     }
 
     /**
@@ -20,6 +21,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return 'show';
+        $event->load(['team', 'place', 'links']);
+        return $event;
     }
 }
