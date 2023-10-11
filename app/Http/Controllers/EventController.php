@@ -24,4 +24,9 @@ class EventController extends Controller
         $event->load(['team', 'place', 'links']);
         return $event;
     }
+
+    public function front() {
+        $events = Event::with(['team', 'place', 'links'])->paginate(15);
+        return view('welcome', ['events' => $events]);
+    }
 }

@@ -1,38 +1,50 @@
-<!doctype html> <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> <head>
-<meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- CSRF Token --> <meta
-    name="csrf-token" content="{{ csrf_token() }}"> <title>{{ config('app.name', 'Laravel') }}</title> <!-- Fonts -->
-<link rel="dns-prefetch" href="//fonts.bunny.net">
-<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-<!-- Scripts -->
-@vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-<style type="text/css">
-    i {
-        font-size: 50px;
-    }
-</style>
-</head>
-
-<body>
-    <div id="app">
-
-        <main class="container">
-            <h1> How to Install Bootstrap 5 in Laravel 10 - ItSolutionstuiff.com</h1>
-            <div class="card">
-                <div class="card-header">
-                    Icons
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>KP陸戰隊</title>
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    </head>
+    <body>
+    
+        <div id="app">
+            <main class="container">
+                <h1 class="text-center">KP陸戰隊</h1>
+                <div class="d-grid gap-3">
+                @foreach ($events as $event)
+                <div class="card">
+                    <div class="card-header">
+                    <strong>{{ $event->name }}</strong>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>開始時間：{{ $event->time_gather }}</li>
+                            @if (!empty($event->time_end))
+                            <li>結束時間：{{ $event->time_end }}</li>
+                            @endif
+                            <li>集合地點：
+                                @if (!empty($event->place->latitude))
+                                <a href="https://www.google.com/maps/dir/?api=1&destination={{ $event->place->latitude }},{{ $event->place->longitude }}&travelmode=driving" target="_blank">{{ $event->place->name }}</a>
+                                @else
+                                {{ $event->place->name }}
+                                @endif
+                            </li>
+                            <li>舉辦團隊：{{ $event->team->name }}</li>
+                        </ul>
+                        <p>{!! nl2br($event->note) !!}</p>
+                        <div class="btn-group">
+                        @foreach ($event->links as $link)
+                        <a href="{{ $link->url }}" target="_blank" class="card-link">{{ $link->title }}</a>
+                        @endforeach
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body text-center">
-                    <i class="bi bi-bag-heart-fill"></i>
-                    <i class="bi bi-app"></i>
-                    <i class="bi bi-arrow-right-square-fill"></i>
-                    <i class="bi bi-bag-check-fill"></i>
-                    <i class="bi bi-calendar-plus-fill"></i>
+                @endforeach
                 </div>
-            </div>
-        </main>
-    </div>
-</body>
-
+                {{ $events->links() }}
+            </main>
+        </div>
+    </body>
 </html>
