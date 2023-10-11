@@ -14,7 +14,9 @@ use App\Http\Controllers\EventController;
 |
 */
 
-Route::get('/', [EventController::class, 'index']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::resource('events', EventController::class)->only([
     'index', 'show'
