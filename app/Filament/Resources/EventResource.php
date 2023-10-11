@@ -113,7 +113,7 @@ class EventResource extends Resource
                             ]);
                         }
                     })
-                    ->successRedirectUrl(fn (Event $record) => route('filament.admin.resources.events.edit', ['record' => $record])),
+                    ->successRedirectUrl(fn (Tables\Actions\ReplicateAction $action) => route('filament.admin.resources.events.edit', ['record' => $action->getReplica()])),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
