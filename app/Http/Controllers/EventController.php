@@ -26,7 +26,7 @@ class EventController extends Controller
     }
 
     public function front() {
-        $events = Event::with(['team', 'place', 'links'])->paginate(15);
+        $events = Event::with(['team', 'place', 'links'])->orderBy('time_gather', 'DESC')->paginate(15);
         return view('welcome', ['events' => $events]);
     }
 }
