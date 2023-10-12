@@ -15,6 +15,7 @@
                     <a href="{{ route('home') }}">KP陸戰隊</a>
                     ::
                     {{ $team->name }}</h1>
+                    <p>{!! $team->note !!}</p>
                 <div class="d-grid gap-3">
                 @foreach ($events as $event)
                 <div class="card">
