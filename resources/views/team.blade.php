@@ -4,14 +4,17 @@
         <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>KP陸戰隊</title>
+        <title>KP陸戰隊::{{ $team->name }}</title>
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body>
     
         <div id="app">
             <main class="container">
-                <h1 class="text-center"><a href="{{ route('home') }}">KP陸戰隊</a></h1>
+                <h1 class="text-center">
+                    <a href="{{ route('home') }}">KP陸戰隊</a>
+                    ::
+                    {{ $team->name }}</h1>
                 <div class="d-grid gap-3">
                 @foreach ($events as $event)
                 <div class="card">
@@ -31,7 +34,7 @@
                                 {{ $event->place->name }}
                                 @endif
                             </li>
-                            <li>舉辦團隊：<a href="{{ route('teams.show', ['team' => $event->team_id]) }}">{{ $event->team->name }}</a></li>
+                            <li>舉辦團隊：{{ $event->team->name }}</li>
                         </ul>
                         <p>{!! nl2br($event->note) !!}</p>
                         <div class="btn-group">

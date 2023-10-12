@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,12 @@ use App\Http\Controllers\EventController;
 |
 */
 
-Route::get('/', [EventController::class, 'front']);
+Route::get('/', [EventController::class, 'front'])->name('home');
 
 Route::resource('events', EventController::class)->only([
+    'index', 'show'
+]);
+
+Route::resource('teams', TeamController::class)->only([
     'index', 'show'
 ]);
