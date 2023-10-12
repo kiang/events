@@ -33,7 +33,7 @@
                             </li>
                             <li>舉辦團隊：<a href="{{ route('teams.show', ['team' => $event->team_id]) }}">{{ $event->team->name }}</a></li>
                         </ul>
-                        <p>{!! nl2br($event->note) !!}</p>
+                        <p>{!! $event->note !!}</p>
                         <div class="btn-group">
                         @foreach ($event->links as $link)
                         <a href="{{ $link->url }}" target="_blank" class="card-link">{{ $link->title }}</a>

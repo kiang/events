@@ -51,7 +51,7 @@ class EventResource extends Resource
                     ->required()
                     ->maxLength(255),
 
-                Forms\Components\Textarea::make('note')
+                Forms\Components\RichEditor::make('note')
                     ->maxLength(65535)
                     ->columnSpanFull(),
             ]);

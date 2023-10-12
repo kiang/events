@@ -37,7 +37,7 @@
                             </li>
                             <li>舉辦團隊：{{ $event->team->name }}</li>
                         </ul>
-                        <p>{!! nl2br($event->note) !!}</p>
+                        <p>{!! $event->note !!}</p>
                         <div class="btn-group">
                         @foreach ($event->links as $link)
                         <a href="{{ $link->url }}" target="_blank" class="card-link">{{ $link->title }}</a>
