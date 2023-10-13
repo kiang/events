@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\PlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,9 @@ Route::resource('events', EventController::class)->only([
 ]);
 
 Route::resource('teams', TeamController::class)->only([
+    'index', 'show'
+]);
+
+Route::resource('places', PlaceController::class)->only([
     'index', 'show'
 ]);
