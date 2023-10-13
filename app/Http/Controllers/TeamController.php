@@ -13,8 +13,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $data = Team::with(['events'])->paginate(15);
-        return $data;
+        $teams = Team::paginate(15);
+        return view('team.index', ['teams' => $teams]);
     }
 
     /**
