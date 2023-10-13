@@ -19,7 +19,7 @@
                 @foreach ($teams as $team)
                 <div class="card">
                     <div class="card-header">
-                    <a href="{{ route('team.show', ['id' => $team->id]) }}"><strong>{{ $team->name }}</strong></a>
+                    <a href="{{ route('teams.show', ['id' => $team->id]) }}"><strong>{{ $team->name }}</strong></a>
                     </div>
                     <div class="card-body">
                         <p>{!! $team->note !!}</p>
