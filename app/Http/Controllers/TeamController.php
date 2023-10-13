@@ -23,6 +23,6 @@ class TeamController extends Controller
     public function show(Team $team)
     {
         $events = Event::with(['team', 'place', 'links'])->where('team_id', '=', $team->id)->orderBy('time_gather', 'DESC')->paginate(15);
-        return view('team', ['team' => $team, 'events' => $events]);
+        return view('team.show', ['team' => $team, 'events' => $events]);
     }
 }
