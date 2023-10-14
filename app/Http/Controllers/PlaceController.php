@@ -12,12 +12,15 @@ class PlaceController extends Controller
      */
     public function index()
     {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: *');
+        header('Access-Control-Allow-Headers: *');
         $places = Place::all();
         $now = time();
-        foreach($places AS $place) {
+        foreach ($places as $place) {
             $place->events = $place->events()->orderBy('time_gather', 'DESC')->limit(1)->get();
             $place->days = 0;
-            if(!empty($place->events[0])) {
+            if (!empty($place->events[0])) {
                 $theTime = strtotime($place->events[0]->time_gather);
                 $place->date = date('m/d', $theTime);
                 $place->days = ceil(($theTime - $now) / 86400);
