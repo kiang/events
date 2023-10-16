@@ -12,6 +12,11 @@
         <div id="app">
             <main class="container">
                 <h1 class="text-center"><a href="{{ route('home') }}">KP陸戰隊</a></h1>
+                <hr />
+                <div class="btn-group">
+                    <a href="{{ route('home') }}" class="btn {{ ($type === 'front') ? 'btn-default' : 'btn-primary' }}">最近活動</a>
+                    <a href="{{ route('events.all') }}" class="btn {{ ($type === 'all') ? 'btn-default' : 'btn-primary' }}">全部活動</a>
+                </div>
                 <div class="d-grid gap-3">
                 @foreach ($events as $event)
                 <div class="card">
