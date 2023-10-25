@@ -36,6 +36,9 @@ class PlaceResource extends Resource
                     ->numeric(),
                 Forms\Components\TextInput::make('latitude')
                     ->numeric(),
+                Forms\Components\ViewField::make('latlng')
+                    ->view('filament.forms.components.latlng')
+                    ->columnSpanFull(),
                 Forms\Components\RichEditor::make('note')
                     ->maxLength(65535)
                     ->columnSpanFull(),
