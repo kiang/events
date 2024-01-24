@@ -19,6 +19,7 @@ use App\Http\Controllers\PlaceController;
 Route::get('/', [EventController::class, 'front'])->name('home');
 
 Route::get('events/all', [EventController::class, 'all'])->name('events.all');
+Route::get('teams/events/{team}', [TeamController::class, 'events'])->name('team.events');
 
 Route::resource('events', EventController::class)->only([
     'index', 'show'

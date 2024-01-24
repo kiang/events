@@ -25,4 +25,12 @@ class TeamController extends Controller
         $events = Event::with(['team', 'place', 'links'])->where('team_id', '=', $team->id)->orderBy('time_gather', 'DESC')->paginate(15);
         return view('team.show', ['team' => $team, 'events' => $events]);
     }
+
+    public function events(Team $team) {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: *');
+        header('Access-Control-Allow-Headers: *');
+        $events = Event::where('team_id', '=', $team->id)->with('place')->get();
+        return $events;
+    }
 }
